@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+    - image: circleci/node:lts
+    steps:
+    - checkout
+    - run:
+      name: Install dependencies
+      command: |
+        yarn --frozen-lockfile
+
+workflows:
+  build-and-package:
+    jobs: 
+      - build
